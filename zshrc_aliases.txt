@@ -1,0 +1,252 @@
+# ================================================
+# Personal Agent System Aliases
+# Add these to your ~/.zshrc file
+# ================================================
+
+# Change to personalAgent directory
+alias pa='cd ~/personalAgent'
+
+# Main system commands
+alias pagent='cd ~/personalAgent && ./scripts/getLatest.sh'
+alias patoday='cd ~/personalAgent && ./scripts/getLatest.sh today'
+alias paweek='cd ~/personalAgent && ./scripts/getLatest.sh week'
+
+# Calendar and sacred time
+alias pacal='cd ~/personalAgent && ./venv/bin/python scripts/calendar_fetcher.py'
+alias patzolkin='cd ~/personalAgent && ./venv/bin/python scripts/fetchGregorian.py'
+
+# Calendar switching and management (NEW PROFILE SYSTEM)
+alias pacal-switch='cd ~/personalAgent && ./venv/bin/python scripts/profileManager.py switch'
+alias pacal-current='cd ~/personalAgent && ./venv/bin/python scripts/profileManager.py current'
+alias pacal-list='cd ~/personalAgent && ./venv/bin/python scripts/profileManager.py list'
+alias pacal-context='cd ~/personalAgent && ./venv/bin/python scripts/profileManager.py context'
+alias pacal-conflicts='cd ~/personalAgent && ./venv/bin/python scripts/profileManager.py conflicts'
+
+# Profile shortcuts for quick switching
+alias pa-family='cd ~/personalAgent && ./venv/bin/python scripts/profileManager.py switch --profile family'
+alias pa-personal='cd ~/personalAgent && ./venv/bin/python scripts/profileManager.py switch --profile personal'
+alias pa-work='cd ~/personalAgent && ./venv/bin/python scripts/profileManager.py switch --profile work'
+
+# Terminal prompt integration (for oh-my-zsh themes)
+alias pa-prompt='cd ~/personalAgent && ./venv/bin/python scripts/promptHelper.py'
+alias pa-prompt-short='cd ~/personalAgent && ./venv/bin/python scripts/promptHelper.py --short'
+
+# Legacy calendar commands (for backward compatibility)
+alias pacal-old='cd ~/personalAgent && ./venv/bin/python scripts/calendarSwitcher.py'
+alias pacal-profiles='cd ~/personalAgent && ./venv/bin/python scripts/calendarSwitcher.py profiles'
+alias pacal-setup='cd ~/personalAgent && ./venv/bin/python scripts/setup_calendars.py'
+
+# Subtask inference and AI
+alias pasubtasks='cd ~/personalAgent && ./venv/bin/python scripts/inferSubtask.py'
+alias pademo='cd ~/personalAgent && ./venv/bin/python scripts/demo_subtasks.py'
+
+# Quick activity listing (lightweight, no full system run)
+alias palist='cd ~/personalAgent && ./venv/bin/python scripts/listActivities.py'
+alias palist-today='cd ~/personalAgent && ./venv/bin/python scripts/listActivities.py today'
+alias palist-tomorrow='cd ~/personalAgent && ./venv/bin/python scripts/listActivities.py tomorrow'
+alias palist-week='cd ~/personalAgent && ./venv/bin/python scripts/listActivities.py week'
+alias palist-month='cd ~/personalAgent && ./venv/bin/python scripts/listActivities.py month'
+
+# Activity management (edit/delete/complete tasks)
+alias pamanage='cd ~/personalAgent && ./venv/bin/python scripts/manageActivities.py'
+alias paedit='cd ~/personalAgent && ./venv/bin/python scripts/manageActivities.py edit'
+alias padelete='cd ~/personalAgent && ./venv/bin/python scripts/manageActivities.py delete'
+alias pacomplete='cd ~/personalAgent && ./venv/bin/python scripts/manageActivities.py complete'
+alias paadd='cd ~/personalAgent && ./venv/bin/python scripts/manageActivities.py add'
+
+# Model management (LLM switching)
+alias pamodels='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py'
+alias pamodel-list='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py list'
+alias pamodel-openai='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py list openai'
+alias pamodel-gemini='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py list gemini'
+alias pamodel-claude='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py list anthropic'
+alias pamodel-router='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py list openrouter'
+
+# Quick model switching
+alias pamodel-gpt4='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py set openai "gpt-4o-mini"'
+alias pamodel-gemini-flash='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py set gemini "gemini-1.5-flash"'
+alias pamodel-gemini-pro='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py set gemini "gemini-1.5-pro"'
+alias pamodel-claude='cd ~/personalAgent && ./venv/bin/python scripts/setModel.py set anthropic "claude-3-haiku-20240307"'
+
+# Data inspection
+alias padata='ls -la ~/personalAgent/data/cache/ | tail -10'
+alias palogs='tail -20 ~/personalAgent/data/logs/*.log 2>/dev/null || echo "No logs found"'
+alias paconfig='cat ~/personalAgent/.env | grep -v "your_.*_key_here"'
+
+# Environment and setup
+alias pavenv='cd ~/personalAgent && source ./venv/bin/activate'
+alias painstall='cd ~/personalAgent && ./venv/bin/pip install -r requirements.txt'
+alias paupdate='cd ~/personalAgent && git pull && ./venv/bin/pip install -r requirements.txt'
+
+# Quick file access
+alias paedit-context='code ~/personalAgent/config/personal_context.json'
+alias paedit-env='code ~/personalAgent/.env'
+alias paedit-main='code ~/personalAgent/scripts/getLatest.sh'
+alias paedit-infer='code ~/personalAgent/scripts/inferSubtask.py'
+
+# System status and debugging
+alias pastatus='echo "🤖 Personal Agent Status:" && cd ~/personalAgent && echo "📁 Directory: $(pwd)" && echo "🐍 Python: $(./venv/bin/python --version)" && echo "🔧 LLM: $(grep "LLM_PROVIDER\|LLM_MODEL" .env | grep -v "your_.*_key_here")" && echo "📊 Latest files:" && ls -la data/cache/ | tail -3'
+
+alias pacheck='cd ~/personalAgent && echo "🔍 Checking system health..." && ./venv/bin/python -c "
+import os
+from dotenv import load_dotenv
+load_dotenv()
+print(f\"🤖 LLM Provider: {os.getenv('LLM_PROVIDER', 'Not set')}\")" && echo "📅 Calendar connection..." && timeout 10 ./venv/bin/python scripts/calendar_fetcher.py today >/dev/null 2>&1 && echo "✅ Calendar OK" || echo "❌ Calendar issue" && echo "🧠 LLM connection..." && timeout 10 ./venv/bin/python scripts/demo_subtasks.py >/dev/null 2>&1 && echo "✅ LLM OK" || echo "❌ LLM issue"'
+
+# Quick shortcuts for common tasks
+alias panow='cd ~/personalAgent && echo "🌟 Current Reality Matrix:" && date && echo "" && ./scripts/getLatest.sh today'
+alias paquick='cd ~/personalAgent && ./venv/bin/python scripts/calendar_fetcher.py today && ./venv/bin/python scripts/inferSubtask.py today'
+
+# Fun convenience aliases
+alias consciousness='panow'
+alias matrix='pagent'
+alias galactic='patzolkin'
+alias subtasks='pasubtasks'
+alias activities='palist'
+alias upcoming='palist'
+alias manage='pamanage'
+alias edit-todo='paedit'
+alias cal-switch='pacal-switch'
+alias calendars='pacal-list'
+
+# Security and Administration Commands
+alias pa-security='cd ~/personalAgent && ./bin/pa-security-audit'
+alias pa-credentials='cd ~/personalAgent && ./bin/pa-credentials'
+alias pa-migrate-keys='cd ~/personalAgent && ./bin/pa-credentials migrate'
+alias pa-test-compat='cd ~/personalAgent && ./bin/pa-test-compatibility'
+alias pa-secure-store='cd ~/personalAgent && ./bin/pa-credentials store'
+alias pa-secure-list='cd ~/personalAgent && ./bin/pa-credentials list'
+
+# Help and documentation
+alias pahelp='cd ~/personalAgent && ./venv/bin/python scripts/help.py'
+
+# ================================================
+# PERSONALAGENT HELP - COMPLETE COMMAND REFERENCE
+# ================================================
+# 
+# 🌟 MAIN SYSTEM COMMANDS:
+#   pagent                    Run full personal agent system
+#   patoday                   Run system for today only
+#   paweek                    Run system for week
+#   consciousness            Quick status + today's matrix
+#   matrix                   Alias for pagent
+#
+# 📋 ACTIVITY MANAGEMENT:
+#   palist [timeframe]       Quick activity list (today/tomorrow/week/month)
+#   palist-today             Today's activities
+#   palist-tomorrow          Tomorrow's activities  
+#   palist-week              This week's activities
+#   palist-month             This month's activities
+#   activities               Alias for palist
+#   upcoming                 Alias for palist
+#
+# ✏️  TODO MANAGEMENT:
+#   pamanage                 Interactive TODO manager
+#   paedit T1                Edit TODO by ID (T1, T2, etc.)
+#   padelete "text"          Delete TODO by partial text or ID
+#   pacomplete T3            Mark TODO as complete
+#   paadd                    Add new TODO
+#   manage                   Alias for pamanage
+#   edit-todo                Alias for paedit
+#
+# 🤖 AI & SUBTASKS:
+#   pasubtasks               Generate intelligent subtasks
+#   pademo                   Test subtask generation
+#   subtasks                 Alias for pasubtasks
+#
+# 🔧 MODEL MANAGEMENT:
+#   pamodels                 Model management interface
+#   pamodel-list [provider]  List models (openai/gemini/claude/openrouter)
+#   pamodel-gpt4             Switch to GPT-4o-mini
+#   pamodel-gemini-flash     Switch to Gemini 1.5 Flash
+#   pamodel-gemini-pro       Switch to Gemini 1.5 Pro
+#   pamodel-claude           Switch to Claude Haiku
+#
+# 📅 CALENDAR & TIME:
+#   pacal                    Fetch calendar events
+#   patzolkin                Sacred calendar calculations
+#   galactic                 Alias for patzolkin
+#   pacal-switch             Calendar management interface
+#   pacal-current            Show current active calendar
+#   pacal-list               List all available calendars
+#   pacal-profiles           Show saved calendar profiles
+#   pacal-setup              Initial calendar configuration
+#   cal-switch               Alias for pacal-switch
+#   calendars                Alias for pacal-list
+#
+# 🔍 SYSTEM STATUS:
+#   pastatus                 Complete system health check
+#   pacheck                  Quick connectivity test
+#   padata                   View recent cache files
+#   palogs                   View recent logs
+#   paconfig                 Show configuration (safe)
+#
+# 🛠️  DEVELOPMENT & FILES:
+#   pa                       Go to personalAgent directory
+#   pavenv                   Activate virtual environment
+#   painstall                Install/update dependencies
+#   paupdate                 Pull updates + install deps
+#   paedit-context           Edit personal context
+#   paedit-env               Edit environment variables
+#   paedit-main              Edit main orchestration script
+#   paedit-infer             Edit subtask inference script
+#
+# 🚀 QUICK WORKFLOWS:
+#   panow                    Current reality matrix
+#   paquick                  Fast calendar + subtask run
+#   pahelp                   Show this help
+#
+# 💡 EXAMPLES:
+#   activities               See what's coming up
+#   manage                   Interactive TODO management
+#   paedit T2                Edit TODO #2
+#   padelete "old task"      Remove by partial text
+#   pamodel-list openai      See available OpenAI models
+#   consciousness            Full system status
+#
+# ================================================
+
+# ================================================
+# SETUP INSTRUCTIONS
+# ================================================
+# 
+# TO USE THESE ALIASES:
+# 
+# Option 1 - Source this file (RECOMMENDED):
+# Add this line to your ~/.zshrc:
+#   source ~/personalAgent/zshrc_aliases.txt
+# 
+# Then reload: source ~/.zshrc
+#
+# Option 2 - Copy content:
+# 1. Copy this file content
+# 2. Open ~/.zshrc: nano ~/.zshrc  
+# 3. Paste at the end
+# 4. Reload: source ~/.zshrc
+#
+# ================================================
+
+# Usage Examples:
+# ================================================
+# pagent                    # Run full system
+# palist today              # Quick activity list for today
+# palist-week               # Quick activity list for week
+# pamanage                  # Interactive activity manager
+# paedit T1                 # Edit TODO by ID
+# padelete "presentation"   # Delete TODO by partial text
+# pacomplete T3             # Mark TODO as complete
+# activities                # Alias for palist (quick activity list)
+# manage                    # Alias for pamanage (interactive manager)
+# pamodel-list openai       # List OpenAI models
+# pamodel-gpt4             # Switch to GPT-4o-mini
+# pademo                   # Test subtask generation
+# pastatus                 # Check system status
+# consciousness            # Quick status + today's matrix
+# ================================================
+
+# To add these to your .zshrc:
+# 1. Copy this file content
+# 2. Open ~/.zshrc: nano ~/.zshrc
+# 3. Paste at the end
+# 4. Reload: source ~/.zshrc
+# ================================================

@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+
+# Environment and secrets
+.env
+.env.local
+.env.production
+
+# Credentials and tokens
+config/credentials.json
+config/token.json
+config/token_*.json
+config/secure_credentials.enc
+config/credential_salt.dat
+
+# Cache and logs
+data/cache/*
+data/logs/*
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Security reports
+security_audit_report.json
+compatibility_test_report.json

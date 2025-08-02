@@ -1,0 +1,20 @@
+{
+  "created_at": "2025-08-01T21:00:54.266764",
+  "total_available": 3,
+  "selected_count": 1,
+  "selected_calendars": [
+    {
+      "id": "contact@abquanta.com",
+      "name": "contact@abquanta.com",
+      "description": "Personal Calendar ",
+      "primary": true,
+      "access_role": "owner",
+      "background_color": "#4986e7",
+      "foreground_color": "#000000",
+      "time_zone": "Europe/Paris"
+    }
+  ],
+  "calendar_ids": [
+    "contact@abquanta.com"
+  ]
+}

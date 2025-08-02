@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+"""
+PersonalAgent Cross-Platform Test Entry Point
+Quick access to compatibility testing
+"""
+
+import sys
+from pathlib import Path
+
+# Add src to path
+script_dir = Path(__file__).parent
+src_dir = script_dir.parent / "src"
+sys.path.insert(0, str(src_dir))
+
+from utils.cross_platform_test import CrossPlatformTester
+
+def main():
+    """Main entry point for cross-platform testing"""
+    project_root = script_dir.parent
+    tester = CrossPlatformTester(project_root)
+    report = tester.run_compatibility_tests()
+    
+    # Save report
+    report_file = project_root / "compatibility_test_report.json"
+    import json
+    with open(report_file, 'w') as f:
+        json.dump(report, f, indent=2)
+    
+    print(f"\n📄 Detailed report saved to: {report_file}")
+    
+    # Exit with appropriate code
+    sys.exit(0 if report['compatible'] else 1)
+
+if __name__ == "__main__":
+    main()

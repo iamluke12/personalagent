@@ -1,0 +1,45 @@
+{
+  "location": {
+    "home": {
+      "address": "Leipzig, Germany",
+      "has_kitchen": true,
+      "has_car": false
+    },
+    "work": {
+      "remote": true,
+      "office_location": ""
+    },
+    "grocery_stores": [
+      "REWE",
+      "Edeka",
+      "Aldi"
+    ],
+    "gym": "Local Gym"
+  },
+  "preferences": {
+    "cooking_skill": "intermediate",
+    "transport_method": "public_transport",
+    "work_style": "deep_focus",
+    "energy_patterns": {
+      "peak": [
+        "09:00",
+        "14:00"
+      ],
+      "low": [
+        "13:00",
+        "16:00"
+      ]
+    }
+  },
+  "resources": {
+    "has_car": false,
+    "has_bike": true,
+    "kitchen_equipped": true,
+    "home_office": true
+  },
+  "patterns": {
+    "typical_meal_prep": 30,
+    "commute_time": 15,
+    "meeting_prep": 10
+  }
+}

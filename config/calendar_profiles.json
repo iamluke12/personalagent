@@ -1,0 +1,105 @@
+{
+  "profiles": {
+    "family": {
+      "name": "Family Profile",
+      "description": "Family calendar with highest priority",
+      "priority": 1,
+      "calendars": [
+        {
+          "id": "family04220863751865269375@group.calendar.google.com",
+          "name": "Familia",
+          "role": "primary",
+          "access": "owner",
+          "color": "#FF6B6B"
+        }
+      ],
+      "conflict_resolution": {
+        "blocks_others": true,
+        "can_be_moved": false,
+        "auto_suggest_alternatives": true
+      },
+      "display_settings": {
+        "show_in_other_profiles": true,
+        "show_as_busy": true,
+        "filter_keywords": [
+          "family",
+          "kids",
+          "home",
+          "personal"
+        ]
+      }
+    },
+    "personal": {
+      "name": "Personal Profile",
+      "description": "Personal calendar, second priority",
+      "priority": 2,
+      "calendars": [
+        {
+          "id": "contact@abquanta.com",
+          "name": "Personal",
+          "role": "primary",
+          "access": "owner",
+          "color": "#4ECDC4"
+        }
+      ],
+      "conflict_resolution": {
+        "blocks_others": false,
+        "can_be_moved": true,
+        "auto_suggest_alternatives": true,
+        "avoid_family_conflicts": true
+      },
+      "display_settings": {
+        "show_family_events": true,
+        "show_as_busy": true,
+        "filter_keywords": [
+          "personal",
+          "self",
+          "appointment",
+          "health"
+        ]
+      }
+    },
+    "work": {
+      "name": "Work Profile",
+      "description": "Work calendar, fills free slots only",
+      "priority": 3,
+      "calendars": [
+        {
+          "id": "c_4e56628a377bda398ef3fd8dce7870f823001874732ce8056d943f3cc16197ce@group.calendar.google.com",
+          "name": "Work",
+          "role": "primary",
+          "access": "owner",
+          "color": "#95E1D3"
+        }
+      ],
+      "conflict_resolution": {
+        "blocks_others": false,
+        "can_be_moved": true,
+        "auto_suggest_alternatives": true,
+        "avoid_family_conflicts": true,
+        "avoid_personal_conflicts": true,
+        "free_slots_only": true
+      },
+      "display_settings": {
+        "show_family_events": true,
+        "show_personal_events": false,
+        "show_as_busy": false,
+        "filter_keywords": [
+          "work",
+          "meeting",
+          "project",
+          "deadline",
+          "business"
+        ]
+      }
+    }
+  },
+  "current_profile": "family",
+  "settings": {
+    "auto_switch_on_keyword": true,
+    "override_mode": false,
+    "conflict_notification": true,
+    "smart_suggestions": true,
+    "terminal_prompt_integration": false
+  }
+}
