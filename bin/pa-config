@@ -1,0 +1,188 @@
+#!/usr/bin/env python3
+"""
+PersonalAgent Configuration Manager
+==================================
+
+Main command-line interface for PersonalAgent configuration management.
+"""
+
+import os
+import sys
+import argparse
+
+# Add src to path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from src.config.config_manager import ConfigManager
+
+def main():
+    """Main CLI entry point"""
+    parser = argparse.ArgumentParser(
+        description="PersonalAgent Configuration Manager",
+        epilog="For interactive mode, run without arguments"
+    )
+    
+    parser.add_argument(
+        "--status", 
+        action="store_true",
+        help="Show configuration status"
+    )
+    
+    parser.add_argument(
+        "--validate",
+        action="store_true", 
+        help="Validate configuration"
+    )
+    
+    parser.add_argument(
+        "--backup",
+        metavar="LABEL",
+        help="Create backup with optional label"
+    )
+    
+    parser.add_argument(
+        "--restore",
+        metavar="BACKUP_NAME",
+        help="Restore from backup"
+    )
+    
+    parser.add_argument(
+        "--list-backups",
+        action="store_true",
+        help="List available backups"
+    )
+    
+    parser.add_argument(
+        "--reset",
+        action="store_true",
+        help="Reset configuration to defaults"
+    )
+    
+    args = parser.parse_args()
+    
+    # Initialize configuration manager
+    config_manager = ConfigManager()
+    
+    # Handle non-interactive commands
+    if args.status:
+        show_status(config_manager)
+    elif args.validate:
+        validate_config(config_manager)
+    elif args.backup is not None:
+        create_backup(config_manager, args.backup or None)
+    elif args.restore:
+        restore_backup(config_manager, args.restore)
+    elif args.list_backups:
+        list_backups(config_manager)
+    elif args.reset:
+        reset_config(config_manager)
+    else:
+        # Launch interactive TUI
+        try:
+            from src.config.ui.tui_main import ConfigurationTUI
+            app = ConfigurationTUI()
+            app.run()
+        except ImportError as e:
+            print(f"❌ Error launching interactive mode: {e}")
+            print("Use command-line arguments for non-interactive mode")
+            parser.print_help()
+
+def show_status(config_manager):
+    """Show configuration status"""
+    print("📊 PersonalAgent Configuration Status")
+    print("=" * 40)
+    
+    status = config_manager.get_status()
+    
+    print(f"Config Directory: {status['config_dir']}")
+    print(f"Profiles: {status['profiles']['count']}")
+    print(f"Current Profile: {status['profiles']['current']}")
+    print(f"Available Profiles: {', '.join(status['profiles']['available'])}")
+    
+    print("\nContext Configuration:")
+    print(f"  Location set: {'✓' if status['context']['location_set'] else '✗'}")
+    print(f"  Preferences set: {'✓' if status['context']['preferences_set'] else '✗'}")
+    print(f"  Resources set: {'✓' if status['context']['resources_set'] else '✗'}")
+    
+    print("\nFiles:")
+    print(f"  Profiles exist: {'✓' if status['files']['profiles_exists'] else '✗'}")
+    print(f"  Context exists: {'✓' if status['files']['context_exists'] else '✗'}")
+    print(f"  Backup dir exists: {'✓' if status['files']['backup_dir_exists'] else '✗'}")
+
+def validate_config(config_manager):
+    """Validate configuration"""
+    print("🔍 Validating PersonalAgent Configuration")
+    print("=" * 40)
+    
+    validation = config_manager.validate_config()
+    
+    if validation['valid']:
+        print("✅ Configuration is valid!")
+    else:
+        print("❌ Configuration has issues:")
+        
+        if validation['errors']:
+            print("\nErrors:")
+            for error in validation['errors']:
+                print(f"  • {error}")
+        
+        if validation['warnings']:
+            print("\nWarnings:")
+            for warning in validation['warnings']:
+                print(f"  • {warning}")
+
+def create_backup(config_manager, label):
+    """Create configuration backup"""
+    print("💾 Creating Configuration Backup")
+    print("=" * 30)
+    
+    if config_manager.create_backup(label):
+        print("✅ Backup created successfully!")
+    else:
+        print("❌ Backup failed!")
+
+def restore_backup(config_manager, backup_name):
+    """Restore configuration from backup"""
+    print(f"📥 Restoring from backup: {backup_name}")
+    print("=" * 40)
+    
+    if config_manager.restore_backup(backup_name):
+        print("✅ Restore completed successfully!")
+    else:
+        print("❌ Restore failed!")
+
+def list_backups(config_manager):
+    """List available backups"""
+    print("📋 Available Backups")
+    print("=" * 20)
+    
+    backups = config_manager.backup.list_backups()
+    
+    if not backups:
+        print("No backups found.")
+        return
+    
+    for backup in backups:
+        print(f"Name: {backup['name']}")
+        print(f"Created: {backup['created_at']}")
+        if backup['label']:
+            print(f"Label: {backup['label']}")
+        print(f"Files: Profiles={backup['files']['profiles']}, Context={backup['files']['context']}")
+        print("-" * 40)
+
+def reset_config(config_manager):
+    """Reset configuration to defaults"""
+    print("⚠️  Reset Configuration to Defaults")
+    print("=" * 35)
+    
+    response = input("This will reset all configuration to defaults. Continue? (y/N): ")
+    if response.lower().startswith('y'):
+        if config_manager.reset_to_defaults():
+            print("✅ Configuration reset successfully!")
+        else:
+            print("❌ Reset failed!")
+    else:
+        print("Reset cancelled.")
+
+if __name__ == "__main__":
+    main()
